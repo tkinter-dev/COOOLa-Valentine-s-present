@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quà Tặng 14/2</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            text-align: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            width: 90%;
+            max-width: 300px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        .hidden {
+            display: none;
+        }
+        .heart {
+            color: red;
+            font-size: 25px;
+            animation: pulse 1s infinite;
+            margin-top: 20px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .secret {
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Điều chỉnh font-size cho màn hình nhỏ */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1em;
+            }
+            button {
+                font-size: 14px;
+                padding: 10px 18px;
+            }
+            .heart {
+                font-size: 22px;
+            }
+            .secret {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Chúc bạn một ngày 14/2 vui vẻ! 💖</h1>
+    <button onclick="showGift()">Nhận quà</button>
+    <p id="gift-content" class="heart hidden"></p>
+    <div id="secret-gift" class="hidden">
+        <p class="secret">🎊 Chúc mừng! Bạn đã mở khóa quà tặng bí mật! 🎈</p>
+        <p>💎 "Chúc em có tất cả những gì mình muốn, còn tất cả vất vả thì để tk !bồ! lo!!" 💫</p>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const giftContent = document.getElementById('gift-content');
+        const secretGift = document.getElementById('secret-gift');
+        const gifts = [
+            "❤️ Bạn là một người tuyệt vời, chúc bạn luôn vui vẻ!",
+            "💖 Chúc bạn ngày 14/2 tràn ngập yêu thương!",
+            "💕 Hãy luôn mỉm cười vì bạn rất đặc biệt!",
+            "💓 Gửi đến bạn một trái tim ấm áp!",
+            "💝 Mong bạn có một ngày đầy niềm vui và hạnh phúc!",
+            "🌹 Một bông hồng cho người dễ thương nhất!",
+            "🎁 Một bất ngờ nhỏ dành cho bạn - hãy luôn hạnh phúc nhé!"
+        ];
+
+        function showGift() {
+            clickCount++;
+            if (clickCount === 5) {
+                secretGift.classList.remove('hidden');
+            } else {
+                giftContent.textContent = gifts[Math.floor(Math.random() * gifts.length)];
+                giftContent.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
